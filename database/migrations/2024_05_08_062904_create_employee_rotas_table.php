@@ -26,7 +26,7 @@ class CreateEmployeeRotasTable extends Migration
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
 
             $table->unsignedBigInteger("user_id")->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
 
 
 
@@ -47,14 +47,10 @@ class CreateEmployeeRotasTable extends Migration
 
 
             $table->unsignedBigInteger("business_id")->nullable();
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
 
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
-
+    
 
             $table->softDeletes();
             $table->timestamps();

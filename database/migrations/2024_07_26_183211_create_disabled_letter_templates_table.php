@@ -22,14 +22,9 @@ class CreateDisabledLetterTemplatesTable extends Migration
             ->constrained('letter_templates')
             ->onDelete('cascade');
 
-            $table->foreignId('business_id')
-            ->constrained('businesses')
-            ->onDelete('cascade');
+            $table->unsignedBigInteger("business_id");
+            $table->unsignedBigInteger("created_by")->nullable();
 
-            $table->foreignId('created_by')
-            ->nullable()
-            ->constrained('users')
-            ->onDelete('set null');
 
 
             $table->timestamps();

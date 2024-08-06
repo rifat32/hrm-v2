@@ -18,7 +18,7 @@ class CreateAttendanceHistoriesTable extends Migration
             $table->unsignedBigInteger("attendance_id")->nullable();
 
             $table->unsignedBigInteger("actor_id")->nullable();
-            $table->foreign('actor_id')->references('id')->on('users')->onDelete('set null');
+
             $table->string('action');
             $table->date('attendance_created_at');
             $table->date('attendance_updated_at');
@@ -33,7 +33,7 @@ class CreateAttendanceHistoriesTable extends Migration
 
 
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
 
             $table->unsignedBigInteger("work_location_id");
             $table->foreign('work_location_id')->references('id')->on('work_locations')->onDelete('restrict');
@@ -77,7 +77,7 @@ class CreateAttendanceHistoriesTable extends Migration
             $table->boolean("is_active")->default(true);
 
             $table->unsignedBigInteger("business_id");
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
             $table->double('regular_hours_salary');
             $table->double('overtime_hours_salary');
 
@@ -87,10 +87,7 @@ class CreateAttendanceHistoriesTable extends Migration
 
 
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
+     
             $table->timestamps();
         });
     }

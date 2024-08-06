@@ -20,15 +20,11 @@ class CreateDisabledEmploymentStatusesTable extends Migration
             $table->foreign('employment_status_id')->references('id')->on('employment_statuses')->onDelete('cascade');
 
             $table->unsignedBigInteger("business_id")->nullable();
-            $table->foreign('business_id')->references('id')->on('users')->onDelete('cascade');
+
 
 
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
-
+        
 
 
 

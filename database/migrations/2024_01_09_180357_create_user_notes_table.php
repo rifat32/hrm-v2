@@ -16,10 +16,7 @@ class CreateUserNotesTable extends Migration
         Schema::create('user_notes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+
 
             $table->string('title');
             $table->text('description');
@@ -27,16 +24,10 @@ class CreateUserNotesTable extends Migration
             $table->json('history')->nullable();
 
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
+
 
             $table->unsignedBigInteger("updated_by")->nullable();
-            $table->foreign('updated_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
+       
             $table->timestamps();
         });
     }

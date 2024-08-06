@@ -43,7 +43,7 @@ class CreateTasksTable extends Migration
 
 
             $table->unsignedBigInteger("assigned_to");
-            $table->foreign('assigned_to')->references('id')->on('users')->onDelete('cascade');
+
 
             $table->unsignedBigInteger("project_id");
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
@@ -59,19 +59,15 @@ class CreateTasksTable extends Migration
 
 
             $table->unsignedBigInteger("assigned_by")->nullable();
-            $table->foreign('assigned_by')->references('id')->on('users')->onDelete('set null');
 
 
 
             $table->boolean("is_active")->default(true);
             $table->unsignedBigInteger("business_id");
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
 
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
+       
             $table->timestamps();
         });
     }

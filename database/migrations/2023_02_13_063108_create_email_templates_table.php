@@ -30,7 +30,7 @@ class CreateEmailTemplatesTable extends Migration
 
             $table->boolean("is_default");
             $table->unsignedBigInteger("business_id")->nullable();
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
 
 
 
@@ -41,7 +41,7 @@ class CreateEmailTemplatesTable extends Migration
         });
 
 
-        
+
     }
 
     /**

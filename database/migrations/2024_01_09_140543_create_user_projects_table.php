@@ -17,7 +17,6 @@ class CreateUserProjectsTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger("project_id");
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
 

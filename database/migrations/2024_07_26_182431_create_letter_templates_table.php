@@ -24,9 +24,7 @@ class CreateLetterTemplatesTable extends Migration
             $table->boolean('is_active')->default(false);
             $table->boolean('is_default')->default(false);
 
-            $table->foreignId('business_id')
-            ->constrained('businesses')
-            ->onDelete('cascade');
+            $table->unsignedBigInteger("business_id");
 
             $table->unsignedBigInteger("created_by");
             $table->softDeletes();

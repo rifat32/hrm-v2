@@ -22,7 +22,6 @@ class CreatePayrollsTable extends Migration
             $table->foreign('payrun_id')->references('id')->on('payruns')->onDelete('cascade');
 
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->double('total_holiday_hours')->nullable();
             $table->double('total_paid_leave_hours')->nullable();
@@ -54,12 +53,8 @@ class CreatePayrollsTable extends Migration
 
             $table->boolean("is_active")->default(true);
             $table->unsignedBigInteger("business_id");
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
             $table->timestamps();
         });
     }

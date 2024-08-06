@@ -19,7 +19,6 @@ class CreatePayrunUsersTable extends Migration
             $table->unsignedBigInteger('payrun_id');
             $table->foreign('payrun_id')->references('id')->on('payruns')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
 

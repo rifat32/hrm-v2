@@ -27,9 +27,8 @@ class CreatePayrunsTable extends Migration
 
 
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
             $table->unsignedBigInteger('business_id');
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
             $table->timestamps(); // Created_at and updated_at columns
 
 

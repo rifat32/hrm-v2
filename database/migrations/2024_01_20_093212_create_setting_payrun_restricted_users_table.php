@@ -19,7 +19,6 @@ class CreateSettingPayrunRestrictedUsersTable extends Migration
             $table->unsignedBigInteger("setting_payrun_id")->nullable();
             $table->foreign('setting_payrun_id')->references('id')->on('setting_payruns')->onDelete('cascade');
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

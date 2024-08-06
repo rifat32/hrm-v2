@@ -17,9 +17,9 @@ class CreateEmployeeSponsorshipHistoriesTable extends Migration
 
             $table->id();
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+ 
             $table->unsignedBigInteger("business_id");
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
             $table->date("date_assigned");
             $table->date("expiry_date");
             $table->enum('status', ['pending', 'approved', 'denied', 'visa_granted'])->default("pending");
@@ -31,14 +31,11 @@ class CreateEmployeeSponsorshipHistoriesTable extends Migration
 
             $table->date("from_date");
             $table->date("to_date")->nullable();
-   
+
 
             $table->boolean("is_manual")->default(0);
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
+
             $table->timestamps();
         });
     }

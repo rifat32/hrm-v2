@@ -17,7 +17,7 @@ class CreateLeaveHistoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger("leave_id")->nullable();
             $table->unsignedBigInteger("actor_id")->nullable();
-            $table->foreign('actor_id')->references('id')->on('users')->onDelete('set null');
+
             $table->string('action');
             $table->boolean('is_approved')->nullable();
             $table->date('leave_created_at');
@@ -29,7 +29,7 @@ class CreateLeaveHistoriesTable extends Migration
             $table->unsignedBigInteger("leave_type_id");
             $table->foreign('leave_type_id')->references('id')->on('setting_leave_types')->onDelete('restrict');
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->date('date')->nullable();
             $table->string('note');
             $table->date('start_date')->nullable();
@@ -46,13 +46,10 @@ class CreateLeaveHistoriesTable extends Migration
 
             $table->boolean("is_active")->default(true);
             $table->unsignedBigInteger("business_id");
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
 
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
+   
             $table->timestamps();
         });
     }

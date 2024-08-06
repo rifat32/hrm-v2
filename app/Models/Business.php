@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Traits\DatabaseUtil;
+use App\Http\Utils\DatabaseUtil;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,15 +11,10 @@ use Illuminate\Support\Facades\File;
 
 class Business extends Model
 {
-    use HasFactory, DatabaseUtil;
+    use HasFactory;
 
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
 
-        $this->setConnectionForBusiness();
-    }
-    
+
     protected $appends = ['is_subscribed'];
 
     protected $fillable = [

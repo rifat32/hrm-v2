@@ -21,7 +21,7 @@ use App\Models\User;
 use App\Models\WorkLocation;
 use App\Models\WorkShift;
 use App\Models\WorkShiftHistory;
-use App\Traits\DatabaseUtil;
+use App\Http\Utils\DatabaseUtil;;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -949,7 +949,7 @@ trait BusinessUtil
             ]);
         }
 
-        $this->createDatabase();
+        $this->createDatabase($business->id);
 
         $this->storeDefaultsToBusiness($business);
 

@@ -17,7 +17,7 @@ class CreateEmployeeAddressHistoriesTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
 
             $table->string("address_line_1")->nullable();
             $table->string("address_line_2")->nullable();
@@ -30,10 +30,7 @@ class CreateEmployeeAddressHistoriesTable extends Migration
             $table->date("to_date")->nullable();
             $table->boolean("is_manual")->default(0);
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
+        
             $table->timestamps();
         });
     }

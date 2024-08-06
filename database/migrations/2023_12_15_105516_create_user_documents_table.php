@@ -17,18 +17,12 @@ class CreateUserDocumentsTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+
             $table->string("name");
             $table->string("file_name");
 
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
+          
             $table->timestamps();
 
         });

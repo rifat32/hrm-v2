@@ -22,12 +22,12 @@ class CreateAttendancesTable extends Migration
             $table->string('out_geolocation')->nullable();
 
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+  
 
             $table->unsignedBigInteger("work_location_id");
             $table->foreign('work_location_id')->references('id')->on('work_locations')->onDelete('restrict');
 
-          
+
 
 
 
@@ -78,7 +78,7 @@ class CreateAttendancesTable extends Migration
             $table->boolean("is_active")->default(true);
 
             $table->unsignedBigInteger("business_id");
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
 
 
 
@@ -95,10 +95,6 @@ class CreateAttendancesTable extends Migration
 
 
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
 
 
 

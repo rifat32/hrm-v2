@@ -16,7 +16,7 @@ class CreateUserWorkShiftsTable extends Migration
         Schema::create('user_work_shifts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->unsignedBigInteger("work_shift_id");
             $table->foreign('work_shift_id')->references('id')->on('work_shifts')->onDelete('cascade');
             $table->timestamps();

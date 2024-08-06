@@ -22,13 +22,9 @@ class CreateTaskCommentMentionsTable extends Migration
                 ->on('comments')
                 ->onDelete('cascade');
 
-                
+
 
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
 
 
 

@@ -16,8 +16,7 @@ class CreateUserHolidaysTable extends Migration
         Schema::create('user_holidays', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id")->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
-            
+
             $table->unsignedBigInteger("holiday_id");
             $table->foreign('holiday_id')->references('id')->on('holidays')->onDelete('cascade');
             $table->timestamps();

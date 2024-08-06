@@ -18,7 +18,7 @@ class CreateSettingLeaveSpecialUsersTable extends Migration
             $table->unsignedBigInteger("setting_leave_id")->nullable();
             $table->foreign('setting_leave_id')->references('id')->on('setting_leaves')->onDelete('cascade');
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+     
             $table->timestamps();
         });
     }

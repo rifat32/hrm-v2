@@ -23,7 +23,7 @@ class CreateUserAssetHistoriesTable extends Migration
             $table->foreign('user_asset_id')->references('id')->on('user_assets')->onDelete('set null');
 
             $table->unsignedBigInteger("business_id");
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
 
 
             $table->string("name");
@@ -41,10 +41,7 @@ class CreateUserAssetHistoriesTable extends Migration
             $table->date("to_date")->nullable();
 
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
+        
 
 
 

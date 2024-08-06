@@ -23,7 +23,7 @@ class CreateBusinessModulesTable extends Migration
 
 
             $table->unsignedBigInteger("business_id")->nullable();
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
 
             $table->unsignedBigInteger("module_id")->nullable();
             $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');

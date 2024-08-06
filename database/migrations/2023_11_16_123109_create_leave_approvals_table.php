@@ -19,7 +19,7 @@ class CreateLeaveApprovalsTable extends Migration
             $table->unsignedBigInteger("leave_id");
             $table->foreign('leave_id')->references('id')->on('leaves')->onDelete('cascade');
             $table->unsignedBigInteger("created_by");
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+     
             $table->timestamps();
         });
     }

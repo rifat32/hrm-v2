@@ -41,7 +41,7 @@ class CreateWorkShiftHistoriesTable extends Migration
 
 
             $table->unsignedBigInteger("business_id")->nullable();
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
 
 
             $table->unsignedBigInteger('work_shift_id')->nullable();
@@ -51,10 +51,7 @@ class CreateWorkShiftHistoriesTable extends Migration
 
 
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
+     
 
 
             $table->timestamps();

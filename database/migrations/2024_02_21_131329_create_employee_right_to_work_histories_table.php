@@ -16,9 +16,9 @@ class CreateEmployeeRightToWorkHistoriesTable extends Migration
         Schema::create('employee_right_to_work_histories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+       
             $table->unsignedBigInteger("business_id");
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
 
             $table->string('right_to_work_code');
             $table->date('right_to_work_check_date');
@@ -28,14 +28,11 @@ class CreateEmployeeRightToWorkHistoriesTable extends Migration
 
             $table->date("from_date");
             $table->date("to_date")->nullable();
-          
+
             $table->boolean("is_manual")->default(0);
 
             $table->unsignedBigInteger("created_by")->nullable();
-            $table->foreign('created_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
+
 
             $table->timestamps();
         });

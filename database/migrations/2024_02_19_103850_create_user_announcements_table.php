@@ -16,7 +16,6 @@ class CreateUserAnnouncementsTable extends Migration
         Schema::create('user_announcements', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger("announcement_id");
             $table->foreign('announcement_id')->references('id')->on('announcements')->onDelete('cascade');
             $table->enum("status",['read', 'unread'])->default("unread")->nullable();

@@ -22,14 +22,9 @@
               ->constrained('{{ $names["table_name"] }}')
               ->onDelete('cascade');
 
-              $table->foreignId('business_id')
-              ->constrained('businesses')
-              ->onDelete('cascade');
+              $table->unsignedBigInteger("business_id");
 
-              $table->foreignId('created_by')
-              ->nullable()
-              ->constrained('users')
-              ->onDelete('set null');
+              $table->unsignedBigInteger("created_by")->nullable();
 
 
               $table->timestamps();

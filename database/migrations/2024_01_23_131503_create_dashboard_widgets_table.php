@@ -18,7 +18,6 @@ class CreateDashboardWidgetsTable extends Migration
             $table->string('widget_name');
             $table->integer('widget_order')->unsigned();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ class CreateBusinessSubscriptionsTable extends Migration
         Schema::create('business_subscriptions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('business_id');
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
 
             $table->unsignedBigInteger('service_plan_id');
             $table->foreign('service_plan_id')->references('id')->on('service_plans')->onDelete('cascade');

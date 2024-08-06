@@ -68,9 +68,7 @@ class CreateUserLettersTable extends Migration
 
 
 
-            $table->foreignId('business_id')
-            ->constrained('businesses')
-            ->onDelete('cascade');
+            $table->unsignedBigInteger("business_id");
 
             $table->unsignedBigInteger("created_by");
             $table->softDeletes();

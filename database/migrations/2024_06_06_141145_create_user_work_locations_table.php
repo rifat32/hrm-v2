@@ -19,7 +19,6 @@ class CreateUserWorkLocationsTable extends Migration
             $table->foreign('work_location_id')->references('id')->on('work_locations')->onDelete('cascade');
 
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

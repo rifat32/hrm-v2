@@ -16,7 +16,6 @@ class CreateEmailerLogsTable extends Migration
         Schema::create('emailer_logs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->boolean("is_login_attempts");
 
             $table->timestamps();

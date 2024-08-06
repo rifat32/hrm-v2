@@ -28,14 +28,14 @@ class CreateNotificationsTable extends Migration
             $table->text("notification_link");
 
             $table->unsignedBigInteger("sender_id");
-            $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
+
 
             $table->unsignedBigInteger("receiver_id");
-            $table->foreign('receiver_id')->references('id')->on('users')->onDelete('cascade');
+            
 
 
             $table->unsignedBigInteger("business_id")->nullable();
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
 
             $table->boolean("is_system_generated")->nullable();
 

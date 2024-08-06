@@ -25,7 +25,7 @@ class CreateRecruitmentProcessesTable extends Migration
             $table->boolean('use_in_on_boarding')->default(true);
 
             $table->unsignedBigInteger("business_id")->nullable();
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
             $table->unsignedBigInteger("created_by");
             $table->timestamps();
 

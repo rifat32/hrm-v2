@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Http\Utils\BasicUtil;
-use App\Traits\DatabaseUtil;
+use App\Http\Utils\DatabaseUtil;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -15,14 +15,9 @@ use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
-    use   Billable, HasApiTokens, HasFactory, Notifiable, HasRoles,HasPermissions, BasicUtil, DatabaseUtil;
+    use   Billable, HasApiTokens, HasFactory, Notifiable, HasRoles,HasPermissions, BasicUtil;
 
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
 
-        $this->setConnectionForBusiness();
-    }
 
     /**
      * The attributes that are mass assignable.

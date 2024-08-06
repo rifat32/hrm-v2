@@ -20,7 +20,7 @@ class CreateBusinessTimesTable extends Migration
             $table->time('end_at')->nullable();
             $table->boolean("is_weekend");
             $table->unsignedBigInteger("business_id");
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
