@@ -2,13 +2,21 @@
 
 namespace App\Models;
 
+use App\Traits\DatabaseUtil;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    use HasFactory;
+    use HasFactory, DatabaseUtil;
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setConnectionForBusiness();
+    }
 
 
     protected $fillable = [
@@ -69,7 +77,7 @@ class Task extends Model
     {
         return $this->belongsTo(User::class, 'assigned_by','id');
     }
-    
+
     public function assigned_to()
     {
         return $this->belongsTo(User::class, 'assigned_to','id');

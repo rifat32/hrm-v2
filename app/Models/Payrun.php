@@ -3,13 +3,21 @@
 namespace App\Models;
 
 use App\Http\Utils\BasicUtil;
+use App\Traits\DatabaseUtil;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Payrun extends Model
 {
-    use HasFactory, BasicUtil;
+    use HasFactory, BasicUtil, DatabaseUtil;
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setConnectionForBusiness();
+    }
 
     protected $fillable = [
         "period_type",

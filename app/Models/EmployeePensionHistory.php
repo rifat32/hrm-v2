@@ -2,13 +2,24 @@
 
 namespace App\Models;
 
+use App\Traits\DatabaseUtil;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 
 class EmployeePensionHistory extends Model
 {
-    use HasFactory;
+    use HasFactory, DatabaseUtil;
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setConnectionForBusiness();
+    }
+
+
+
     protected $fillable = [
         'business_id',
         'pension_eligible',
@@ -19,7 +30,7 @@ class EmployeePensionHistory extends Model
         'pension_re_enrollment_due_date',
         "is_manual",
         'user_id',
-      
+
         "from_date",
         "to_date",
         'created_by'

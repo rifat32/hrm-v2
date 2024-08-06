@@ -7,11 +7,9 @@ use App\Models\Business;
 use App\Models\BusinessModule;
 use App\Models\BusinessTime;
 use App\Models\Department;
-use App\Models\DepartmentUser;
-use App\Models\Designation;
+
 use App\Models\EmailTemplate;
-use App\Models\EmploymentStatus;
-use App\Models\JobPlatform;
+
 use App\Models\Project;
 use App\Models\Role;
 use App\Models\SettingAttendance;
@@ -23,6 +21,7 @@ use App\Models\User;
 use App\Models\WorkLocation;
 use App\Models\WorkShift;
 use App\Models\WorkShiftHistory;
+use App\Traits\DatabaseUtil;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +34,7 @@ use PharIo\Manifest\Email;
 
 trait BusinessUtil
 {
-    use BasicUtil, DiscountUtil;
+    use BasicUtil, DiscountUtil, DatabaseUtil;
     // this function do all the task and returns transaction id or -1
 
 
@@ -950,6 +949,8 @@ trait BusinessUtil
             ]);
         }
 
+        $this->createDatabase();
+
         $this->storeDefaultsToBusiness($business);
 
 
@@ -967,6 +968,8 @@ trait BusinessUtil
         }
 
         $business->service_plan = $business->service_plan;
+
+
 
         return [
             "user" => $user,

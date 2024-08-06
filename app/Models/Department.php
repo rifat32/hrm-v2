@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\DatabaseUtil;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +10,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
-    use HasFactory;
+    use HasFactory, DatabaseUtil;
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setConnectionForBusiness();
+    }
     protected $appends = ['total_users_count'];
     protected $fillable = [
         "name",

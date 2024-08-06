@@ -2,13 +2,21 @@
 
 namespace App\Models;
 
+use App\Traits\DatabaseUtil;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class LeaveRecordHistory extends Model
 {
-    use HasFactory;
+    use HasFactory, DatabaseUtil;
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setConnectionForBusiness();
+    }
     protected $fillable = [
         'leave_id',
         'date',
@@ -29,7 +37,7 @@ class LeaveRecordHistory extends Model
     public function leave(){
         return $this->belongsTo(LeaveHistory::class,'leave_id', 'id');
     }
-    
+
     // public function getCreatedAtAttribute($value)
     // {
     //     return (new Carbon($value))->format('d-m-Y');
