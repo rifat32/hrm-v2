@@ -16,8 +16,7 @@ class ResponseMiddleware
     public function handle($request, Closure $next)
     {
 
-     // Define your API project's base URL
-     $apiBaseUrl = config('app.url'); // This gets the base URL from the app configuration
+    
 
 
 

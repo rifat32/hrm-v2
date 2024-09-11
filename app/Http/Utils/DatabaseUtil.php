@@ -2,6 +2,7 @@
 
 namespace App\Http\Utils;
 
+use Exception;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ trait DatabaseUtil
                 $connectionName = 'business_' . $businessId;
 
                 try {
-                    config(["database.connections.{$connectionName}" => [
+                    config(["database.connections.business" => [
                         'driver' => 'mysql',
                         'host' => env('DB_HOST', '127.0.0.1'),
                         'port' => env('DB_PORT', '3306'),
@@ -35,10 +36,10 @@ trait DatabaseUtil
                     $this->setConnection($connectionName);
 
 
-                } catch (\Exception $e) {
+                } catch (Exception $e) {
                     error_log('Database connection error: ' . $e->getMessage());
                       // Throw a more specific exception or handle the error gracefully
-        throw new \Exception('Failed to set database connection for business');
+        throw new Exception('Failed to set database connection for business');
                 }
             }
 
@@ -47,7 +48,7 @@ trait DatabaseUtil
 
     public function createDatabase($business_id){
 
-error_log("creating...............................");
+     error_log("creating...............................");
         if(!empty($business_id)) {
             $databaseName = 'business_' . $business_id;
 
